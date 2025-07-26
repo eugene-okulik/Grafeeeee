@@ -10,4 +10,3 @@ del my_dict['dict'][2]
 my_dict['set'].add(17)
 my_dict['set'].remove(17)
 print(my_dict)
-
