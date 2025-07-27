@@ -10,6 +10,6 @@ for x in text:
         elif var.endswith(','):
             lst.append(var[:-1] + 'ing,')
         else:
-            lst.append(var[:]+'ing')
+            lst.append(var[:] + 'ing')
 
 print(' '.join(lst))
