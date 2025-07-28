@@ -9,4 +9,5 @@ def payment():
     else:
         print("Введено не число!")
 
+
 payment()
