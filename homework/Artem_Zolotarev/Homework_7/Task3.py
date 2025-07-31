@@ -5,7 +5,7 @@ fourth_str = 'результат: 2'
 
 
 def summary(text):
-    return int(text.split()[-1])+10
+    return int(text.split()[-1]) + 10
 
 
 print(summary(first_str))
