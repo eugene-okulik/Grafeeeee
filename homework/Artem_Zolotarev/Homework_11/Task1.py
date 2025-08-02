@@ -78,6 +78,7 @@ class EducationBooks(Book):
             return (f'Название: {self.title}, Автор: {self.author}, предмет: {self.subject},'
                     f' класс: {self.grade}')
 
+
 eb1 = EducationBooks('бумага', True, 'Алгебра', 'Попов', 'Математика',
                      9, True, 236, False)
 eb2 = EducationBooks('бумага', True, 'Физика', 'Федченко', 'Физика',
