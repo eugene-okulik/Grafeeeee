@@ -69,6 +69,7 @@ class Bouquet:
     def __repr__(self):
         return f'{self.__class__.__name__}: {list(self.list_flowers)}'
 
+
 flower1 = Rose('rose', 150, 24, 1, 50, 'red')
 flower2 = Tulpan('tulpan', 100, 48, 1, 20, 'yellow')
 flower3 = Narcisse('narcisse', 300, 18, 1, 15, 'white')
