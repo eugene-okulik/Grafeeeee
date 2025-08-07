@@ -43,8 +43,8 @@ class Bouquet:
     def find_flower_by_lifecircle(self, min_value: int = None, max_value: int = None):
         filtered_flowers = []
         for flower in self.list_flowers:
-            if ((min_value is None or flower.lifecircle >= min_value) and
-                    (max_value is None or flower.lifecircle <= max_value)):
+            if ((min_value is None or flower.lifecircle >= min_value) and (
+                    max_value is None or flower.lifecircle <= max_value)):
                 filtered_flowers.append(flower.title)
         return filtered_flowers
 
