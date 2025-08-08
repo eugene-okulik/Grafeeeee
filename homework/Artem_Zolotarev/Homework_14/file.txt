@@ -7,6 +7,8 @@ INSERT INTO `books`  (title, taken_by_student_id) VALUES
 INSERT INTO `groups`  (title, start_date , end_date) VALUES
 ('Okulik''s Tester', 'june 2025','in progress')
 
+UPDATE students SET group_id = 5520 WHERE id = 20961
+
 INSERT INTO `subjects` (title) VALUES
 ('History'),
 ('Music'),
