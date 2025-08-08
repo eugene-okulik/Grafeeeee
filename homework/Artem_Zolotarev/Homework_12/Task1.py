@@ -45,7 +45,7 @@ class Bouquet:
         for flower in self.list_flowers:
             if ((min_value is None or flower.lifecircle >= min_value) and (
                     max_value is None or flower.lifecircle <= max_value)):
-                filtered_flowers.append(flower.title)
+                filtered_flowers.append(flower)
         return filtered_flowers
 
     def __repr__(self):
