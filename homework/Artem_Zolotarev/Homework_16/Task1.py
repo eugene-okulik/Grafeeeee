@@ -28,7 +28,7 @@ def get_query():
 
     cursor = db.cursor(dictionary=True)
     cursor.execute('''
-    SELECT s.name,s.second_name, g.title as group_title, b.title as book_title, s2.title as subject_title, 
+    SELECT s.name,s.second_name, g.title as group_title, b.title as book_title, s2.title as subject_title,
     l.title as lesson_title, m.value as mark_value
     FROM students s
     JOIN `groups` g ON g.id = s.group_id
