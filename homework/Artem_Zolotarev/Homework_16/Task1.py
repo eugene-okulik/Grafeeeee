@@ -36,7 +36,6 @@ def get_query():
     JOIN marks m ON m.student_id = s.id
     JOIN lessons l ON m.lesson_id = l.id
     JOIN subjects s2 ON l.subject_id = s2.id
-    WHERE s.name = 'Petr' and s.second_name = 'Ivanov' and g.title = 'GR_O222'
      ''')
     for x in cursor.fetchall():
         yield x
