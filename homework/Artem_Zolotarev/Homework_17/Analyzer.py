@@ -18,7 +18,7 @@ def logs_files():
                     for idx, word in enumerate(words):
                         if args.text == word:
                             before = words[max(0, idx - 5): idx]
-                            after = words[idx+1:idx+6]
+                            after = words[idx + 1:idx + 6]
                             print(f'Requested text is founded on {i} in {filename}. Consist of ({before}),'
                                   f' ({word}) and ({after})')
 
