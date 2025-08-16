@@ -19,8 +19,9 @@ def logs_files():
                         if args.text == word:
                             before = words[max(0, idx - 5): idx]
                             after = words[idx + 1:idx + 6]
-                            print(f'Requested text is founded on {i} in {filename}. Consist of ({before}),'
-                                  f' ({word}) and ({after})')
+                            print(f'Line: {i}. Name: {filename}.')
+                            result = ' '.join(before) + f" {word} " + ' '.join(after)
+                            print(result)
 
 
 logs_files()
