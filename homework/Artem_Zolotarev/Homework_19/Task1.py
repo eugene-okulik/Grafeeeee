@@ -1,6 +1,10 @@
 import requests
 
 
+def clear(post_id):
+    requests.delete(f'http://objapi.course.qa-practice.com/object/{post_id}')
+
+
 def new_object():
     body = {
         "id": 1,
@@ -67,8 +71,3 @@ def patch_object():
 
 
 patch_object()
-
-
-def clear(post_id):
-    response = requests.delete(f'http://objapi.course.qa-practice.com/object/{post_id}')
-
