@@ -12,39 +12,46 @@ def new_object():
 
 
 @pytest.fixture(scope='session')
-def test_looping_test():
+def looping_test():
     print('Start testing')
     yield
     print('Testing completed')
 
 
 @pytest.fixture()
-def test_before_after():
+def before_after():
     print('before test')
     yield
     print('after test')
 
 
+@pytest.mark.smoke
 @pytest.mark.parametrize('name', ['First object', 123, True])
-def test_new_object(name, new_object, test_looping_test, test_before_after):
-    response = requests.get(f'http://objapi.course.qa-practice.com/object/{new_object}')
+def test_new_object(name, looping_test, before_after):
+    body = {f"name": name, "id": 1, "data": {"color": "red", "size": "small"}}
+    response = requests.get(f'http://objapi.course.qa-practice.com/object', json=body)
     assert response.status_code == 200
 
 
+def test_delete_object(new_object, before_after):
+    response = requests.delete(f'http://objapi.course.qa-practice.com/object/{new_object}')
+    assert response.status_code == 200, 'Status code is incorrect'
+
+
 @pytest.mark.critical
-def test_get_object_by_id(new_object, test_before_after):
+def test_get_object_by_id(new_object, before_after):
     response = requests.get(f'http://objapi.course.qa-practice.com/object/{new_object}')
     assert response.status_code == 200, 'Status code is incorrect'
 
 
 @pytest.mark.medium
-def test_put_object(new_object, test_before_after):
+def test_put_object(new_object, before_after):
     body = {"name": "an updated object using put", "id": 1, "data": {"color": "red", "size": "small"}}
     response = requests.put(f'http://objapi.course.qa-practice.com/object/{new_object}', json=body)
     assert response.json()['name'] == 'an updated object using put', 'Status code is incorrect'
 
 
-def test_patch_object(new_object, test_before_after):
+def test_patch_object(new_object, before_after):
     body = {"name": 'an updated object using patch'}
     response = requests.patch(f'http://objapi.course.qa-practice.com/object/{new_object}', json=body)
     assert response.json()['name'] == 'an updated object using patch', 'Status code is incorrect'
