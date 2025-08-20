@@ -28,8 +28,8 @@ def before_after():
 @pytest.mark.smoke
 @pytest.mark.parametrize('name', ['First object', 123, True])
 def test_new_object(name, looping_test, before_after):
-    body = {f"name": name, "id": 1, "data": {"color": "red", "size": "small"}}
-    response = requests.get(f'http://objapi.course.qa-practice.com/object', json=body)
+    body = {"name": name, "id": 1, "data": {"color": "red", "size": "small"}}
+    response = requests.get('http://objapi.course.qa-practice.com/object', json=body)
     assert response.status_code == 200
 
 
