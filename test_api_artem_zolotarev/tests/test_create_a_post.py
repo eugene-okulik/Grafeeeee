@@ -1,5 +1,4 @@
 import pytest
-from test_api_artem_zolotarev.conftest import update_put_method_endpoint, update_patch_method_endpoint
 
 TEST_DATA = [
     {'name': 'first object', 'id': 1, 'data': {'color': 'red', 'size': 'small'}},
