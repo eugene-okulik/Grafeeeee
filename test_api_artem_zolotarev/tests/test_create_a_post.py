@@ -9,12 +9,12 @@ TEST_DATA = [
 @pytest.mark.parametrize('data', TEST_DATA)
 def test_new_object(create_post_endpoint, looping_test, data, before_after):
     create_post_endpoint.create_new_post(data)
-    create_post_endpoint.check_response_status_code_is_correct()
+    create_post_endpoint.check_response_status_code_is_200()
 
 
 def test_delete_object(delete_post_endpoint, new_object, before_after):
     delete_post_endpoint.delete_post(new_object)
-    delete_post_endpoint.check_response_status_code_is_correct()
+    delete_post_endpoint.check_response_status_code_is_200()
 
 
 @pytest.mark.critical
