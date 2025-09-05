@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 @pytest.fixture
 def driver():
     chrome_driver = webdriver.Chrome()
+    chrome_driver.implicitly_wait(5)
     return chrome_driver
 
 
