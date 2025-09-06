@@ -1,9 +1,6 @@
 import pytest
 from selenium import webdriver
-<<<<<<< HEAD
 from selenium.webdriver.chrome.options import Options
-=======
->>>>>>> e352a7d770d5666263ab2c5af7d1449beba76e31
 from selenium.webdriver.common.by import By
 from faker import Faker
 import random
@@ -12,6 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 faker = Faker()
+options = Options()
+options.add_experimental_option('detach', True)
 
 
 def generate_fake_user():
@@ -20,29 +19,17 @@ def generate_fake_user():
 
 
 TEST_DATA = generate_fake_user()
-<<<<<<< HEAD
-options = Options()
-options.add_experimental_option('detach', True)
-=======
->>>>>>> e352a7d770d5666263ab2c5af7d1449beba76e31
 
 
 @pytest.fixture
 def driver():
-<<<<<<< HEAD
     chrome_driver = webdriver.Chrome(options=options)
-=======
-    chrome_driver = webdriver.Chrome()
->>>>>>> e352a7d770d5666263ab2c5af7d1449beba76e31
     chrome_driver.maximize_window()
     return chrome_driver
 
 
 def test_registration_form(driver):
-<<<<<<< HEAD
     wait = WebDriverWait(driver, 10)
-=======
->>>>>>> e352a7d770d5666263ab2c5af7d1449beba76e31
     driver.get("https://demoqa.com/automation-practice-form")
     first_name = driver.find_element(By.XPATH, '//*[@placeholder="First Name"]')
     first_name.send_keys(TEST_DATA['first name'])
@@ -55,7 +42,7 @@ def test_registration_form(driver):
     email = driver.find_element(By.XPATH, '//*[@id="userEmail"]')
     email.send_keys(TEST_DATA['email'])
     phone = driver.find_element(By.XPATH, '//*[@placeholder="Mobile Number"]')
-    phone.send_keys("9" + str(random.randint(10 ** 8, 10 ** 10 - 2)))
+    phone.send_keys(str(random.randint(10 ** 9, 10 ** 10 - 1)))
     birthday = driver.find_element(By.XPATH, '//*[@id="dateOfBirthInput"]')
     birthday.click()
     birthday_month = driver.find_elements(By.CLASS_NAME, 'react-datepicker__month-select')
@@ -69,21 +56,16 @@ def test_registration_form(driver):
     random_day.click()
     address = driver.find_element(By.XPATH, '//*[@id="currentAddress"]')
     address.send_keys(TEST_DATA['Current Address'])
+    subjects = driver.find_element(By.XPATH, '//*[@id="subjectsInput"]')
+    subjects.send_keys('a')
+    wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'subjects-auto-complete__menu-list')))
+    submenu = wait.until((EC.element_to_be_clickable((By.XPATH, '//*[@id="react-select-2-option-0"]'))))
+    submenu.click()
+
     hobbies = driver.find_elements(By.XPATH, '//label[@for="hobbies-checkbox-1" or @for="hobbies-checkbox-2"'
                                              ' or @for="hobbies-checkbox-3"]')
     random.choice(hobbies).click()
-    subjects = driver.find_element(By.XPATH, '//*[@id="subjectsInput"]')
-<<<<<<< HEAD
-    subjects.send_keys('a')
-    wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "subjects-auto-complete__menu-list")))
-    submenu = wait.until(EC.element_to_be_clickable((By.XPATH, '//div[text()="Maths"]')))
-    submenu.click()
-=======
-    subjects.send_keys('"Maths", "Biology", "Physics", "Chemistry"')
-    wait = WebDriverWait(driver, 10)
->>>>>>> e352a7d770d5666263ab2c5af7d1449beba76e31
-    state = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@class=" css-1wa3eu0-placeholder"]')))
-    driver.execute_script("arguments[0].scrollIntoView(true);", state)
+    state = driver.find_element(By.XPATH, '//*[@class=" css-1wa3eu0-placeholder"]')
     state.click()
     state_element = driver.find_element(By.XPATH, '//*[@id="react-select-3-option-1"]')
     state_element.click()
