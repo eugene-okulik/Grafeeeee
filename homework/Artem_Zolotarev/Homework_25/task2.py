@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from faker import Faker
 import random
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -42,7 +43,7 @@ def test_registration_form(driver):
     email = driver.find_element(By.XPATH, '//*[@id="userEmail"]')
     email.send_keys(TEST_DATA['email'])
     phone = driver.find_element(By.XPATH, '//*[@placeholder="Mobile Number"]')
-    phone.send_keys(str(random.randint(10 ** 9, 10 ** 10 - 1)))
+    phone.send_keys('9' + str(random.randint(10 ** 9, 10 ** 10 - 2)))
     birthday = driver.find_element(By.XPATH, '//*[@id="dateOfBirthInput"]')
     birthday.click()
     birthday_month = driver.find_elements(By.CLASS_NAME, 'react-datepicker__month-select')
@@ -65,15 +66,16 @@ def test_registration_form(driver):
     hobbies = driver.find_elements(By.XPATH, '//label[@for="hobbies-checkbox-1" or @for="hobbies-checkbox-2"'
                                              ' or @for="hobbies-checkbox-3"]')
     random.choice(hobbies).click()
-    state = driver.find_element(By.XPATH, '//*[@class=" css-1wa3eu0-placeholder"]')
+    state = wait.until(EC.element_to_be_clickable((By.ID, 'state')))
+    driver.execute_script("arguments[0].scrollIntoView(true);", state)
     state.click()
-    state_element = driver.find_element(By.XPATH, '//*[@id="react-select-3-option-1"]')
+    state_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="react-select-3-option-1"]')))
     state_element.click()
-    city = driver.find_element(By.XPATH, '//*[@class=" css-1wa3eu0-placeholder"]')
+    city = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@class=" css-1wa3eu0-placeholder"]')))
     city.click()
-    city_element = driver.find_element(By.XPATH, '//*[@id="react-select-4-option-1"]')
+    city_element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="react-select-4-option-1"]')))
     city_element.click()
     submit_btn = driver.find_element(By.XPATH, '//button[@id="submit"]')
     submit_btn.click()
     modal_body = driver.find_element(By.CLASS_NAME, 'modal-body')
-    print(modal_body.text)
+    modal_body.send_keys(Keys.ENTER)
