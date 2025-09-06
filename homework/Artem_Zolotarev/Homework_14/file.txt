@@ -1,0 +1,54 @@
+INSERT INTO `students` (name, second_name) VALUES
+('Artem', 'Zolotarev')
+
+INSERT INTO `books`  (title, taken_by_student_id) VALUES
+('python, history, comics', 20961)
+
+INSERT INTO `groups`  (title, start_date , end_date) VALUES
+('Okulik''s Tester', 'june 2025','in progress')
+
+UPDATE students SET group_id = 5520 WHERE id = 20961
+
+INSERT INTO `subjects` (title) VALUES
+('History'),
+('Music'),
+('Physics'),
+('Russian'),
+('Biology')
+
+INSERT INTO lessons (title, subject_id) VALUES
+('История Руси', 11668),
+('Средневековая история', 11668)
+('Нотная грамота', 11669),
+('Тоника', 11669)
+('Первый закон термодинамики', 11670),
+('Закон тяжести', 11670)
+('Орфография', 11671),
+('Пунктуация', 11671),
+('Антропология', 11672),
+('Эволюция', 11672)
+
+INSERT INTO marks (value, lesson_id, student_id) VALUES
+(3, 11765, 20961),
+(4, 11764, 20961),
+(2, 11763, 20961),
+(5, 11762, 20961),
+(3, 11761, 20961),
+(5, 11760, 20961),
+(5, 11759, 20961),
+(4, 11758, 20961),
+(4, 11757, 20961),
+(4, 11756, 20961)
+
+SELECT value FROM marks WHERE student_id = 20961
+
+SELECT title FROM books WHERE taken_by_student_id  = 20961
+
+SELECT s.name, s.second_name, b.title, g.id, g.title, m.value, l.title, s2.title
+FROM students AS s
+JOIN books AS b ON b.taken_by_student_id = s.id
+JOIN `groups` AS g ON g.id = s.group_id
+JOIN marks AS m ON m.student_id = s.id
+JOIN lessons AS l ON l.id = m.lesson_id
+JOIN subjects AS s2 ON s2.id = l.subject_id
+WHERE s.id = 20961
