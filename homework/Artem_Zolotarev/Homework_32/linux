@@ -1,0 +1,19 @@
+Go to first line in file: g  <  ESC-<
+Go to last line in file: G  >  ESC->
+Forward one window: f  ^F  ^V  SPACE
+Forward one line: e  ^E  j  ^N  CR
+Backward one line: y  ^Y  k  ^K  ^P
+Search forward for matching line: /pattern
+Search backward for matching line: ?pattern
+Repeat previous search: n
+Repeat previous search in reverse direction: N
+
+/dev/null : character special file
+/dev/zero : character special file
+/dev/sda : Not found
+/dev/tty : character special file
+/root : directory
+/etc/passwd : regular file\ASCII text
+/proc/mounts : symbolic link
+/bin/ls : regular file\ELF 64-bit LSB shared object\dynamically linked
+/bin/zcat : POSIX shell script, ASCII text executable
