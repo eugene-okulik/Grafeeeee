@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, expect
-
 from locators import desk_categories as loc
 from .base_page import BasePage
 
@@ -16,7 +15,7 @@ class DeskCategories(BasePage):
     def get_item_by_filter_category_desk(self):
         get_list_elements = self.find(loc.get_list_elements_loc).all()
         for item in get_list_elements:
-            assert any(word in item.inner_text().lower() for word in ('desk', 'table')),\
+            assert any(word in item.inner_text().lower() for word in ('desk', 'table')), \
                 f'{item.inner_text()} does not include "desk" or "table"'
 
     def get_prices_before(self):
