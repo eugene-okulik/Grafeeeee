@@ -1,0 +1,5 @@
+checkout_loc = '[name="website_sale_main_button"]'
+adding_element_after_loc = '//h6[text()="Office Design Software"]'
+order_text_loc = 'h3'
+order_total_quantity_loc = '//input[contains(@class,"js_quantity quantity")]'
+check_text_loc = '//span[@class="d-block"]'
