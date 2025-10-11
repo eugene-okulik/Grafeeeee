@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+markers = [
+    "regression: marks tests as slow (deselect with '-m \"not slow\"')",
+    "smoke",
+    "all",
+    "extended"
+]
